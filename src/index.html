@@ -1,345 +1,680 @@
-<!--
-  Hello!
-  -
-  Simplefolio is a clean and responsive portfolio template for Developers!
-  Created by Jacobo Martinez.
-  -
-  Github Repo: https://github.com/cobiwave/simplefolio/
-  Readme: https://github.com/cobiwave/simplefolio/README.md
-  -
-  For business & inquires, contact me -> jacobojavier98@gmail.com
--->
 <!DOCTYPE html>
-<html lang="en" class="sr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hydrogen040628 — Portfolio</title>
+  <meta name="description" content="hydrogen040628 — Network Engineer in Training. Portfolio of network & Linux projects." />
+  <meta name="keywords" content="hydrogen040628, network engineer, TP-Link Omada, Pi-hole, Linux, portfolio" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Todo: put here your site title -->
-    <title>hydrogen040628 | Developer</title>
-    <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
-    <meta name="keywords" content="hydrogen040628, developer, portfolio, javascript" />
-    <!-- Todo: improve your SEO by adding a small description of you -->
-    <meta name="description" content="hydrogen040628 | Developer Portfolio" />
+    :root {
+      --cyan:    #00ffe7;
+      --magenta: #ff00a0;
+      --purple:  #7b00ff;
+      --bg:      #0a0a0f;
+      --panel:   #0f0f1a;
+      --border:  #1e1e3a;
+      --text:    #c8c8e0;
+      --dim:     #5a5a7a;
+    }
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="styles.scss" />
-    <script
-      defer
-      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
-    ></script>
+    html { scroll-behavior: smooth; }
 
-    <!-- Todo: remove the below script once you finish your portfolio -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-  <!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
-  <body>
-    <div id="top"></div>
+    /* ── SCANLINES ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.18) 3px,
+        rgba(0,0,0,0.18) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-    <!-- **** Hero Section **** -->
-    <section id="hero" class="jumbotron">
-      <div class="container">
-        <h1 class="hero-title load-hidden">
-          Hi, my name is <span class="text-color-main">Your Name</span>
-          <br />
-          I'm the Unknown Developer.
-        </h1>
-        <p class="hero-cta load-hidden">
-          <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
-            >Know more</a
-          >
-        </p>
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--cyan);
+      text-shadow: 0 0 8px var(--cyan);
+      letter-spacing: 0.05em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--dim);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    nav a:hover { color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 7rem 2rem 4rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 5rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--magenta);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─ FLICKER NAME ─ */
+    .flicker-name {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1;
+      color: var(--cyan);
+      text-shadow:
+        0 0 7px var(--cyan),
+        0 0 20px var(--cyan),
+        0 0 45px rgba(0,255,231,0.4);
+      animation: flicker 6s infinite;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes flicker {
+      0%   { opacity: 1; }
+      3%   { opacity: 0.85; }
+      5%   { opacity: 1; }
+      7%   { opacity: 0.3; }
+      8%   { opacity: 1; }
+      45%  { opacity: 1; }
+      46%  { opacity: 0.7; }
+      47%  { opacity: 1; }
+      70%  { opacity: 1; }
+      71%  { opacity: 0.4; }
+      72%  { opacity: 1; }
+      73%  { opacity: 0.6; }
+      74%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    .hero-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1rem;
+      color: var(--purple);
+      text-shadow: 0 0 10px var(--purple);
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      border-left: 2px solid var(--magenta);
+      padding-left: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      padding: 0.65rem 1.4rem;
+      border: 1px solid;
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+    .btn-cyan {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: inset 0 0 0 0 var(--cyan);
+    }
+    .btn-cyan:hover {
+      background: rgba(0,255,231,0.1);
+      box-shadow: 0 0 16px rgba(0,255,231,0.4);
+    }
+    .btn-magenta {
+      border-color: var(--magenta);
+      color: var(--magenta);
+    }
+    .btn-magenta:hover {
+      background: rgba(255,0,160,0.1);
+      box-shadow: 0 0 16px rgba(255,0,160,0.4);
+    }
+
+    /* ── SECTION HEADER ── */
+    .sec-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--magenta);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .sec-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      text-shadow: 0 0 12px rgba(0,255,231,0.35);
+      margin-bottom: 2.5rem;
+    }
+    .sec-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--cyan), transparent);
+      margin: 0.5rem 0 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 600px) {
+      #about .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .about-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      position: relative;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(to right, var(--purple), transparent);
+    }
+    .about-card h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--purple);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+    .about-card p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-item {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .skill-item:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0,255,231,0.15);
+    }
+    .skill-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      flex-shrink: 0;
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 4px var(--cyan); }
+      50%       { box-shadow: 0 0 14px var(--cyan), 0 0 28px rgba(0,255,231,0.3); }
+    }
+    .skill-item span {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+
+    /* bar accent */
+    .skill-bar-row {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--dim);
+      margin-bottom: 0.3rem;
+    }
+    .skill-bar-track {
+      height: 3px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--purple), var(--cyan));
+      box-shadow: 0 0 8px var(--cyan);
+      animation: grow-bar 1.2s ease-out forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    @keyframes grow-bar { to { transform: scaleX(1); } }
+
+    /* ── PROJECTS ── */
+    .project-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 40px; height: 40px;
+      border-bottom: 2px solid var(--cyan);
+      border-right: 2px solid var(--cyan);
+    }
+    .project-card:hover { border-color: var(--purple); }
+    .project-status {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--magenta);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .project-card h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .project-card p {
+      font-size: 0.88rem;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+    .project-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── DONATE ── */
+    #donate {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+    }
+    .donate-amount-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    .amount-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      color: var(--dim);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.08em;
+    }
+    .amount-btn:hover,
+    .amount-btn.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0,255,231,0.2);
+    }
+    .donate-qr {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .donate-qr img {
+      width: 220px;
+      max-width: 80%;
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      background: #fff;
+      box-shadow: 0 0 20px rgba(0,255,231,0.15);
+    }
+    .donate-note {
+      font-size: 0.82rem;
+      color: var(--dim);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--dim);
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── GLITCH ACCENT ── */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+    .glitch::before {
+      color: var(--magenta);
+      animation: glitch-1 4s infinite;
+      clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+    }
+    .glitch::after {
+      color: var(--cyan);
+      animation: glitch-2 4s infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    }
+    @keyframes glitch-1 {
+      0%, 90%, 100% { transform: none; opacity: 0; }
+      91%  { transform: translateX(-3px); opacity: 0.7; }
+      93%  { transform: translateX(3px);  opacity: 0.7; }
+      95%  { transform: none; opacity: 0; }
+    }
+    @keyframes glitch-2 {
+      0%, 92%, 100% { transform: none; opacity: 0; }
+      93%  { transform: translateX(3px);  opacity: 0.6; }
+      95%  { transform: translateX(-3px); opacity: 0.6; }
+      97%  { transform: none; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flicker-name, .skill-dot, .glitch::before, .glitch::after { animation: none; }
+      .skill-bar-fill { transform: scaleX(1); }
+    }
+
+    @media (max-width: 480px) {
+      nav ul { gap: 1rem; }
+      .hero-cta-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">H040628://</div>
+    <ul>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#donate">DONATE</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">// initializing profile...</p>
+    <h1 class="flicker-name glitch" data-text="hydrogen040628">hydrogen040628</h1>
+    <p class="hero-sub">Network Engineer in Training</p>
+    <p class="hero-desc">
+      กำลังเก็บเกี่ยวทักษะด้าน Network &amp; Linux อย่างจริงจัง<br/>
+      ทุกโปรเจกต์คือบทเรียน — ทุกบทเรียนคือก้าวสู่งานจริง
+    </p>
+    <div class="hero-cta-row">
+      <a href="#projects" class="btn btn-cyan">View Projects</a>
+      <a href="https://github.com/hydrogen040628" target="_blank" rel="noopener" class="btn btn-magenta">GitHub</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="sec-label">// 01</p>
+    <h2 class="sec-title">About</h2>
+    <div class="sec-divider"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Mission</h3>
+        <p>ฝึกทักษะด้วยของจริง ไม่ใช่แค่ทฤษฎี — ทำงานจริง เรียนรู้จริง สร้าง portfolio ที่พูดแทนตัวเองได้ในวันสมัครงาน</p>
       </div>
-    </section>
-    <!-- /END Hero Section -->
-
-    <!-- **** About Section **** -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title load-hidden">About me</h2>
-        <div class="row about-wrapper">
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__image load-hidden">
-              <img
-                alt="Profile Image"
-                class="img-fluid rounded shadow-lg"
-                height="auto"
-                width="300px"
-                src="assets/profile.jpg"
-                alt="Profile Image"
-              />
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__info load-hidden">
-              <p class="about-wrapper__info-text">
-                This is where you can describe about yourself. The more you
-                describe about yourself, the more chances you have!
-              </p>
-              <p class="about-wrapper__info-text">
-                Extra Information about you! like hobbies and your goals.
-              </p>
-              <span class="d-flex mt-3">
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--resume"
-                  href="assets/resume.pdf"
-                >
-                  View Resume
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div class="about-card">
+        <h3>Status</h3>
+        <p>รับงาน Freelance Network Configuration<br/>กำลังสะสมประสบการณ์และผลงานเพื่อก้าวสู่ตำแหน่งประจำ</p>
       </div>
-    </section>
-    <!-- /END About Section -->
+    </div>
+  </section>
 
-    <!-- **** Projects Section **** -->
-    <section id="projects">
-      <div class="container">
-        <div class="project-wrapper">
-          <h2 class="section-title dark-blue-text">Projects</h2>
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="sec-label">// 02</p>
+    <h2 class="sec-title">Skills</h2>
+    <div class="sec-divider"></div>
 
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 0</h3>
-                <div>
-                  <p class="mb-4">
-                    Describe the project being very specific, you can use the Twitter standard: no more than 280 characters: 
-                    complement the information: the skills learned or reinforced in its realization and how you faced it, 
-                    prove to be proactive in the search for solutions.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-dot"></div><span>TP-Link Omada</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Linux Server Admin</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Pi-hole / DNS</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Network Router Config</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>DHCP / VLAN</span></div>
+      <div class="skill-item"><div class="skill-dot"></div><span>Remote Support</span></div>
+    </div>
 
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 1</h3>
-                <div>
-                  <p class="mb-4">
-                    Demonstrate in this description the skills of a programmer: such as having commitment, 
-                    having perseverance and accepting alternative solutions. Remember that being a portfolio you are not selling the project, 
-                    you are selling yourself, it reflects the resources used: Frameworks, libraries, platforms, etc.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 2</h3>
-                <div>
-                  <p class="mb-4">
-                    If the project was collaborative, reflect it in this description, that will demonstrate communication and/or leadership skills. 
-                    Additionally, if you made use of the mastery of a second language, it will reflect on you professionalism.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
-        </div>
+    <div class="skill-bar-row" style="margin-top:2.5rem;">
+      <div>
+        <div class="skill-bar-label"><span>Network Config</span><span>▮▮▮▮▮▯</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
       </div>
-    </section>
-    <!-- /END Projects Section -->
-
-    <!-- **** Contact Section **** -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrapper load-hidden">
-          <p class="contact-wrapper__text">[Put your call to action here]</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            class="cta-btn cta-btn--resume"
-            href="mailto:alitawong9@gmail.com"
-            >Get in touch</
-          >
-        </div>
+      <div>
+        <div class="skill-bar-label"><span>Linux / CLI</span><span>▮▮▮▮▯▯</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%; animation-delay:0.2s"></div></div>
       </div>
-    </section>
-    <!-- /END Contact Section -->
-
-    <!-- **** Footer Section **** -->
-    <footer class="footer navbar-static-bottom">
-      <div class="container">
-        <a rel="noreferrer" href="#top" class="back-to-top">
-          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
-        </a>
-        <div class="social-links">
-          <a rel="noreferrer" href="#!" target="_blank">
-            <i class="fa fa-twitter fa-inverse"></i>
-          </a>
-          <a rel="noreferrer" href="#!" target="_blank">
-            <i class="fa fa-linkedin fa-inverse"></i>
-          </a>
-          <a rel="noreferrer" href="https://github.com/hydrogen040628" target="_blank">
-            <i class="fa fa-github fa-inverse"></i>
-          </a>
-        </div>
-
-        <hr />
-
-        <!-- Notice: if you want to give me some credit, it will be huge for me! if not, put your data on it -->
-        <p class="footer__text">
-          © 2021 - Template developed by
-          <a rel="noreferrer" href="https://github.com/cobiwave" target="_blank"
-            >Jacobo Martínez</a
-          >
-        </p>
-
-        <!-- TO DO: remove this entire paragraph once you finish your portfolio -->
-        <p class="mt-3 pt-3">
-          <a
-            rel="noreferrer"
-            class="github-button"
-            href="https://github.com/cobiwave/simplefolio/fork"
-            data-icon="octicon-repo-forked"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Fork ntkme/github-buttons on GitHub"
-            >Fork</a
-          >
-          <a
-            rel="noreferrer" 
-            class="github-button"
-            href="https://github.com/cobiwave/simplefolio"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star cobiwave/simplefolio on GitHub"
-            >Star</a
-          >
-        </p>
+      <div>
+        <div class="skill-bar-label"><span>TP-Link Omada</span><span>▮▮▮▮▮▯</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%; animation-delay:0.4s"></div></div>
       </div>
-    </footer>
-    <!-- /END Footer Section -->
+    </div>
+  </section>
 
-    <script defer type="module" src="index.js"></script>
-  </body>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="sec-label">// 03</p>
+    <h2 class="sec-title">Projects</h2>
+    <div class="sec-divider"></div>
+
+    <div class="project-card">
+      <p class="project-status">● Live — Freelance</p>
+      <h3>TP-Link Omada Network Setup</h3>
+      <p>ติดตั้งและ config ระบบ network สำหรับ client จริง — managed switch, access points, hardware controller ผ่าน AnyDesk แบบ remote พร้อม dual SSID, guest portal, voucher auth และ VLAN</p>
+      <div class="project-tags">
+        <span class="tag">TP-Link Omada</span>
+        <span class="tag">VLAN</span>
+        <span class="tag">Captive Portal</span>
+        <span class="tag">Remote Config</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <p class="project-status">● Personal Lab</p>
+      <h3>Home Network + Pi-hole DNS</h3>
+      <p>ตั้งค่า Pi-hole บน Raspberry Pi เป็น network-wide ad blocker และ DNS server พร้อม static IP via DHCP binding บน AIS Fibre</p>
+      <div class="project-tags">
+        <span class="tag">Pi-hole</span>
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">DNS</span>
+        <span class="tag">Linux</span>
+      </div>
+    </div>
+
+    <div class="project-card" style="border-style: dashed; opacity: 0.5;">
+      <p class="project-status">○ Incoming</p>
+      <h3>??? — Next Project</h3>
+      <p>โปรเจกต์ถัดไปกำลังก่อตัว — stay tuned</p>
+      <div class="project-tags">
+        <span class="tag">TBD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate">
+    <p class="sec-label">// support</p>
+    <h2 class="sec-title">Buy me a coffee ☕</h2>
+    <p style="color:var(--dim); font-size:0.9rem; max-width:480px; margin:0 auto;">
+      ทุกอย่างที่ทำอยู่เป็นการฝึกทักษะเพื่ออนาคต<br/>
+      ถ้าเนื้อหาหรือโปรเจกต์มีประโยชน์ โดเนทได้ตามความพึงพอใจเลย ไม่มีขั้นต่ำ
+    </p>
+    <div class="donate-amount-row">
+      <button class="amount-btn" data-amount="30">☕ 30฿</button>
+      <button class="amount-btn" data-amount="50">🍜 50฿</button>
+      <button class="amount-btn active" data-amount="100">⚡ 100฿</button>
+      <button class="amount-btn" data-amount="200">🖥️ 200฿</button>
+      <button class="amount-btn" data-amount="custom">Custom</button>
+    </div>
+    <div class="donate-qr">
+      <img id="promptpay-qr" src="https://promptpay.io/1218700011653/100.png" alt="PromptPay QR — hydrogen040628" />
+      <p class="donate-note">สแกนด้วยแอปธนาคารเพื่อโอนผ่าน PromptPay</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>hydrogen040628 &nbsp;·&nbsp; built with intent, not a template &nbsp;·&nbsp; 2025</p>
+  </footer>
+
+  <script>
+    const PROMPTPAY_ID = '1218700011653';
+    const qr = document.getElementById('promptpay-qr');
+
+    // Amount buttons: highlight + update PromptPay QR with the chosen amount
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        let amount = btn.dataset.amount;
+        if (amount === 'custom') {
+          const v = prompt('ระบุจำนวนเงิน (บาท):', '');
+          amount = v && !isNaN(parseFloat(v)) ? String(parseFloat(v)) : '';
+        }
+
+        qr.src = amount
+          ? `https://promptpay.io/${PROMPTPAY_ID}/${amount}.png`
+          : `https://promptpay.io/${PROMPTPAY_ID}.png`;
+      });
+    });
+
+    // Intersection Observer for skill bars
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => {
+      b.style.animationPlayState = 'paused';
+      obs.observe(b);
+    });
+  </script>
+</body>
 </html>
