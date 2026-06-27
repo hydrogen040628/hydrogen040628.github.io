@@ -1,0 +1,30 @@
+{
+  "name": "hydrogen040628-portfolio",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "Personal portfolio built from the Simplefolio template.",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --public-url ./ --dist-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hydrogen040628/hydrogen040628.github.io"
+  },
+  "keywords": [],
+  "author": "hydrogen040628",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
+    "parcel": "^2.8.2",
+    "prettier": "^2.8.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.3",
+    "popper.js": "^1.16.1",
+    "vanilla-tilt": "^1.8.0"
+  }
+}
