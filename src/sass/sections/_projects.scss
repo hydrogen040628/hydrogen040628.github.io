@@ -73,6 +73,112 @@
           margin-bottom: 3.2rem;
         }
       }
+
+      .carousel {
+        position: relative;
+        border-radius: 0.8rem;
+        overflow: hidden;
+        background-color: #f4f4f4;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+
+        @include respond(phone) {
+          box-shadow: none;
+          border: 1px solid $light-grey;
+        }
+
+        &__track {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+
+        &__slide {
+          flex: 0 0 100%;
+          width: 100%;
+          height: 42rem;
+          object-fit: contain;
+          scroll-snap-align: center;
+          background-color: #f4f4f4;
+          user-select: none;
+          -webkit-user-drag: none;
+
+          @include respond(phone) {
+            height: 28rem;
+          }
+        }
+
+        &__btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          width: 4.4rem;
+          height: 4.4rem;
+          border: none;
+          border-radius: 50%;
+          background-color: rgba(39, 35, 65, 0.55);
+          color: $white-color;
+          font-size: 2rem;
+          line-height: 1;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.2s ease, opacity 0.2s ease;
+
+          &:hover {
+            background-color: $primary-color;
+          }
+
+          &:disabled {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          &--prev {
+            left: 1.2rem;
+          }
+
+          &--next {
+            right: 1.2rem;
+          }
+        }
+
+        &__dots {
+          position: absolute;
+          bottom: 1.2rem;
+          left: 0;
+          right: 0;
+          z-index: 2;
+          display: flex;
+          justify-content: center;
+          gap: 0.8rem;
+        }
+
+        &__dot {
+          width: 1.1rem;
+          height: 1.1rem;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+          cursor: pointer;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+
+          &.is-active {
+            background-color: $primary-color;
+            transform: scale(1.2);
+          }
+        }
+      }
     }
   }
 }
