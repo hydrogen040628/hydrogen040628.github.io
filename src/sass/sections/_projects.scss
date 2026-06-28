@@ -89,6 +89,7 @@
         &__track {
           display: flex;
           overflow-x: auto;
+          border-radius: inherit;
           scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
@@ -103,14 +104,30 @@
           flex: 0 0 100%;
           width: 100%;
           height: 42rem;
-          object-fit: contain;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           scroll-snap-align: center;
-          background-color: #f4f4f4;
+          padding: 0.4rem;
+
+          @include respond(phone) {
+            height: 28rem;
+          }
+        }
+
+        &__img {
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          border-radius: 1.4rem;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
           user-select: none;
           -webkit-user-drag: none;
 
           @include respond(phone) {
-            height: 28rem;
+            border-radius: 1rem;
           }
         }
 
@@ -179,6 +196,98 @@
           }
         }
       }
+    }
+  }
+}
+
+/* ===== Liquid glass frame around the project image carousels ===== */
+.project-wrapper__image {
+  // Transparent glass frame: just a clear, refracting rim around the rounded
+  // image — no colour tint, the backdrop shows through.
+  .liquidGlass-wrapper {
+    position: relative;
+    display: block;
+    padding: 1.4rem;
+    border-radius: 2.4rem;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+
+    @include respond(phone) {
+      padding: 0.9rem;
+      border-radius: 2rem;
+    }
+
+    &:hover {
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    }
+  }
+
+  // backdrop refraction/blur (transparent)
+  .liquidGlass-effect {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: inherit;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    filter: url(#glass-distortion);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  // barely-there frost so the glass reads on light backgrounds
+  .liquidGlass-tint {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  // the glassy edge highlight that defines the rim
+  .liquidGlass-shine {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.9),
+      inset -1.5px -1.5px 0px -2px rgba(255, 255, 255, 0.9),
+      inset 0 0 4px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .liquidGlass-content {
+    position: relative;
+    z-index: 3;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+
+    @include respond(phone) {
+      border-radius: 1.4rem;
+    }
+  }
+
+  // carousel / single image sit flush inside the glass frame; images
+  // float on the frosted glass (transparent track so the tint shows through)
+  .liquidGlass-wrapper .carousel {
+    box-shadow: none;
+    border-radius: 1.8rem;
+    background-color: transparent;
+
+    @include respond(phone) {
+      border: none;
+      border-radius: 1.4rem;
+    }
+  }
+
+  .liquidGlass-single {
+    display: block;
+    width: 100%;
+    border-radius: 1.8rem;
+
+    @include respond(phone) {
+      border-radius: 1.4rem;
     }
   }
 }
