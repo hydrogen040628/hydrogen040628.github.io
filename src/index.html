@@ -191,21 +191,42 @@
             </div>
             <div class="col-lg-8 col-sm-12">
               <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="https://github.com/hydrogen040628" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
+                <div class="carousel" data-carousel>
+                  <div class="carousel__track" data-carousel-track>
                     <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project-placeholder.jpg"
+                      class="carousel__slide"
+                      alt="Pi-hole dashboard"
+                      src="assets/project-pihole-1.jpg"
+                    />
+                    <img
+                      class="carousel__slide"
+                      alt="Pi-hole network overview"
+                      src="assets/project-pihole-2.jpg"
+                    />
+                    <img
+                      class="carousel__slide"
+                      alt="Pi-hole system settings"
+                      src="assets/project-pihole-3.jpg"
                     />
                   </div>
-                </a>
+                  <button
+                    class="carousel__btn carousel__btn--prev"
+                    type="button"
+                    aria-label="Previous image"
+                    data-carousel-prev
+                  >
+                    &#10094;
+                  </button>
+                  <button
+                    class="carousel__btn carousel__btn--next"
+                    type="button"
+                    aria-label="Next image"
+                    data-carousel-next
+                  >
+                    &#10095;
+                  </button>
+                  <div class="carousel__dots" data-carousel-dots></div>
+                </div>
               </div>
             </div>
           </div>
