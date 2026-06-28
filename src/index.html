@@ -125,28 +125,41 @@
             </div>
             <div class="col-lg-8 col-sm-12">
               <div class="project-wrapper__image load-hidden">
-                <div
-                  data-tilt
-                  data-tilt-max="4"
-                  data-tilt-glare="true"
-                  data-tilt-max-glare="0.5"
-                  class="thumbnail rounded js-tilt"
-                >
-                  <img
-                    alt="Omada hotspot voucher management"
-                    class="img-fluid rounded mb-3"
-                    src="assets/project.jpg"
-                  />
-                  <img
-                    alt="Omada network setup checklist"
-                    class="img-fluid rounded mb-3"
-                    src="assets/project-omada-2.jpg"
-                  />
-                  <img
-                    alt="Omada network topology diagram"
-                    class="img-fluid rounded"
-                    src="assets/project-omada-3.jpg"
-                  />
+                <div class="carousel" data-carousel>
+                  <div class="carousel__track" data-carousel-track>
+                    <img
+                      class="carousel__slide"
+                      alt="Omada hotspot voucher management"
+                      src="assets/project.jpg"
+                    />
+                    <img
+                      class="carousel__slide"
+                      alt="Omada network setup checklist"
+                      src="assets/project-omada-2.jpg"
+                    />
+                    <img
+                      class="carousel__slide"
+                      alt="Omada network topology diagram"
+                      src="assets/project-omada-3.jpg"
+                    />
+                  </div>
+                  <button
+                    class="carousel__btn carousel__btn--prev"
+                    type="button"
+                    aria-label="Previous image"
+                    data-carousel-prev
+                  >
+                    &#10094;
+                  </button>
+                  <button
+                    class="carousel__btn carousel__btn--next"
+                    type="button"
+                    aria-label="Next image"
+                    data-carousel-next
+                  >
+                    &#10095;
+                  </button>
+                  <div class="carousel__dots" data-carousel-dots></div>
                 </div>
               </div>
             </div>
