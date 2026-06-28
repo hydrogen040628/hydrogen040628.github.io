@@ -200,11 +200,10 @@
   }
 }
 
-/* ===== Liquid glass frame around the project image carousels ===== */
-.project-wrapper__image {
-  // Transparent glass frame: just a clear, refracting rim around the rounded
-  // image — no colour tint, the backdrop shows through.
-  .liquidGlass-wrapper {
+/* ===== Reusable liquid glass frame (project images + contact QR) ===== */
+// Transparent glass frame: just a clear, refracting rim around the rounded
+// image — no colour tint, the backdrop shows through.
+.liquidGlass-wrapper {
     position: relative;
     display: block;
     padding: 1.4rem;
@@ -290,4 +289,9 @@
       border-radius: 1.4rem;
     }
   }
+
+// PromptPay QR card in the Contact section reuses the same glass frame
+.qr-glass {
+  max-width: 30rem;
+  margin: 1.5rem auto 0;
 }
